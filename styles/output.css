@@ -1959,11 +1959,6 @@ video {
   vertical-align: super;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .font-bold {
   font-weight: 700;
 }
@@ -2409,6 +2404,10 @@ video {
 
 .forced-color-adjust-none {
   forced-color-adjust: none;
+}
+
+body{
+  background-color: #F6F7F8;
 }
 
 @media (min-width: 640px) {
