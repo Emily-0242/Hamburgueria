@@ -89,7 +89,7 @@
                 >
                 <div>   
                     <p class="font-bold">Hamburguer Bacon</p>
-                    <p class="text-sm">pão, burguer 160g, queijo, ovo, bacon</p>
+                    <p class="text-sm">pão, burguer 160g, queijo, ovo, bacon, cheddar</p>
                     
                     <div class="flex items-center gap-2 justify-between mt-3">
                         <p class="font-bold text-lg">R$ 15.00</p>
@@ -198,7 +198,7 @@
     <!--BUTTON CART FOOTER-->
 
     <!--MODAL CART-->
-    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center">
+    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
 
         <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
             <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
@@ -215,9 +215,9 @@
             />
             <p class="text-red-900 hidden" id="address-warn">Digite o seu endereço completo!</p>
             
-            <div class="">
-              <button>Fechar</button>
-              <button>Abrir</button>
+            <div class=" flex items-center justify-between mt-5 w-full">
+              <button id="close-modal-btn">Fechar</button>
+              <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
                 
                 
             </div>
@@ -232,9 +232,9 @@
         class="flex items-center gap-2 text-white font-bold"
         id="cart-btn"
         >
-            (<span id="cart-count"></span>)
+            (<span id="cart-count">0</span>)
             Veja meu carrinho
-            <i class="fa fa-cart-plus  text-lg text-white"></i>
+            <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
     </footer>
 
