@@ -73,27 +73,74 @@ function updateCartModal() {
 
     cart.forEach(item => {
         //  Quando acessar esse item cartItemElemente, basicamente está criando uma nova div
-        const cartItemElement = document.createElement("div");
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col"  )
+        const cartItemElement = document.createElement("div")
+        cartItemElement.classList.add("flex","justify-between","mb-4","flex-col")
         // Dentro dela eu quero colocar os meu itens
+
         cartItemElement.innerHTML = `
-        <div   class="flex items-center justify-between"> 
+        <div class="flex items-center justify-between"> 
             <div> 
-            <p class="font-medium">${item.name} </p>
+            <p class="font-medium">${item.name}</p>
             <p>Qtd: ${item.quantity}</p>
-            <p class= "font-medium mb-2">R$ ${item.price.tofixed(2)} </p>
+            <p class= "font-medium mb-2">R$ ${item.price.toFixed(2)}</p>
             </div>
 
-         
-            <button>
-                remover
+            <button class = "remove-from-cart-btn" data-name ="${item.name}">
+                Remover
             </button>
          
         </div>
-        
         `
+
+        total += item.price * item.quantity;
         // colocar um item dentro, que é o nosso cartItemElement
         cartIntemsContainer.appendChild(cartItemElement)
     })
 
+    cartTotal.textContent = total.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+    cartCounter.innerHTML = cart.length;
+
 }
+
+// Função para remover o item do carrinho.
+cartIntemsContainer.addEventListener("click", function(event){
+    if(event.target.classList.contains("remove-from-cart-btn")){
+        const name = event.target.getAttribute("data-name")
+      removeItemCart(name);
+    }
+
+
+})
+
+
+function removeItemCart(name){
+ const index = cart.findIndex( item => item.name === name); 
+ if(index !== -1){
+    const item = cart[index]
+
+    if(item.quantity > 1){
+        item.quantity -= 1;
+        updateCartModal();
+        return
+    }
+// Remover um item da minha lista. Ele pega a posição que está eviando (objeto) e então remove.
+    cart.splice(index, 1);
+    updateCartModal();
+
+ }
+
+}
+
+anddressInput.addEventListener("input", function(event){
+    let inputValue = event.target.value;
+
+    //
+})
+
+checkoutBtn.addEventListener("click", function(){
+    
+})
